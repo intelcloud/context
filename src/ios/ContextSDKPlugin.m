@@ -139,8 +139,8 @@ static bool isStart = NO;
 }
 
 - (void)writeItem:(Item *)item{
-    NSString *dict = [Common dictionaryToJsonString:[item toDictionary]];
-    [super writeJavascript:[NSString stringWithFormat:@"context.onReceivedItem(%@,'%@');", dict, item.getStateType.urn]];
+    NSString *dict = [Common dictionaryToJsonString:[item.state parseToDictionary]];
+    [super writeJavascript:[NSString stringWithFormat:@"context.onReceivedItem(%@,'%@');", dict, item.type.urn]];
 }
 
 - (void)onReceivedInitACK{
